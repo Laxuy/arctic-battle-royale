@@ -132,10 +132,14 @@ public class Game extends Canvas implements Runnable {
             for (int i = 0; i < 4; i++) {
                handler.addObject(new Platform(i * 32 + 448, 544, 32, 16, true, ID.Platform, handler));
             }
-            alive.add(new Player(32, 64, 32, 32, ID.Player1, charPanels[0].getCharacter(), handler, hudHandler));
-            alive.add(new Player(WIDTH - 64, 64, 32, 32, ID.Player2, charPanels[1].getCharacter(), handler, hudHandler));
-            alive.add(new Player(32, 600, 32, 32, ID.Player3, charPanels[2].getCharacter(), handler, hudHandler));
-            alive.add(new Player(WIDTH - 64, 600, 32, 32, ID.Player4, charPanels[3].getCharacter(), handler, hudHandler));
+            if (charPanels[0].getCharacter() != ID.NoCharacter)
+               alive.add(new Player(32, 64, 32, 32, ID.Player1, charPanels[0].getCharacter(), handler, hudHandler));
+            if (charPanels[1].getCharacter() != ID.NoCharacter) 
+               alive.add(new Player(WIDTH - 64, 64, 32, 32, ID.Player2, charPanels[1].getCharacter(), handler, hudHandler));
+            if (charPanels[2].getCharacter() != ID.NoCharacter)
+               alive.add(new Player(32, 600, 32, 32, ID.Player3, charPanels[2].getCharacter(), handler, hudHandler));
+            if (charPanels[3].getCharacter() != ID.NoCharacter)
+               alive.add(new Player(WIDTH - 64, 600, 32, 32, ID.Player4, charPanels[3].getCharacter(), handler, hudHandler));
             break;
          case 1:
             break;
@@ -216,6 +220,10 @@ public class Game extends Canvas implements Runnable {
    
    public static ArrayList<Player> getAlive() {
       return alive;
+   }
+   
+   public CharacterPanel[] getCharPanels() {
+      return charPanels;
    }
    
    public boolean getStarted() {

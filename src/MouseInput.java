@@ -22,7 +22,15 @@ public class MouseInput extends MouseAdapter
             if (tempObject.getId() == ID.StartButton) {
                if (e.getX() > tempObject.getX() && e.getX() < tempObject.getX() + tempObject.getWidth()
                && e.getY() > tempObject.getY() && e.getY() < tempObject.getY() + tempObject.getHeight()) {
-                  game.createStage();
+                  int numberPlayers = 0;
+                  for (int j = 0; j < game.getCharPanels().length; j++) {
+                     if (game.getCharPanels()[j].getCharacter() != ID.NoCharacter) {
+                        numberPlayers++;
+                     }
+                  }
+                  if (numberPlayers > 1) {
+                     game.createStage();
+                  }
                }
             }
          }   
